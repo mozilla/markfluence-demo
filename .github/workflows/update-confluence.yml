@@ -1,0 +1,27 @@
+name: Update Confluence Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Make scripts executable
+        run: chmod +x bin/update_pages.sh bin/markfluence
+
+      - name: Run update script
+        env:
+          # Add any required environment variables here
+          # CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
+          # CONFLUENCE_TOKEN: ${{ secrets.CONFLUENCE_TOKEN }}
+          CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
+          CONFLUENCE_USER: ${{ secrets.CONFLUENCE_USER }}
+          CONFLUENCE_TOKEN: ${{ secrets.CONFLUENCE_TOKEN }}
+        run: ./bin/update_pages.sh
