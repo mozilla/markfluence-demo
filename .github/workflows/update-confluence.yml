@@ -8,6 +8,7 @@ on:
 jobs:
   update-pages:
     runs-on: ubuntu-latest
+    environment: docs-env
 
     steps:
       - name: Checkout repository
