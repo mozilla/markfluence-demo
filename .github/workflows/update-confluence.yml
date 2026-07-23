@@ -14,13 +14,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Make scripts executable
-        run: chmod +x bin/update_pages.sh bin/markfluence
+        run: chmod +x bin/update_pages.sh bin/markfluence-linux-amd64
 
       - name: Run update script
         env:
-          # Add any required environment variables here
-          # CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
-          # CONFLUENCE_TOKEN: ${{ secrets.CONFLUENCE_TOKEN }}
           CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
           CONFLUENCE_USER: ${{ secrets.CONFLUENCE_USER }}
           CONFLUENCE_TOKEN: ${{ secrets.CONFLUENCE_TOKEN }}
