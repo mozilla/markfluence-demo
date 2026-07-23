@@ -2,4 +2,4 @@
 
 # Run from repo root
 
-./bin/markfluence update --page-id=2904981646 some_docs.md
+./bin/markfluence-linux-amd64 update --page-id=2904981646 some_docs.md
