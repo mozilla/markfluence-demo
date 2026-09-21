@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0        # both ends of the push range have to be present
 
-      - uses: mozilla/markfluence-action@main  # FIXME
+      - uses: mozilla/markfluence-action@v1
         with:
           files: 'docs/**/*.md'
         env:
