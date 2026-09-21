@@ -1,25 +1,28 @@
-name: Update Confluence Pages
+name: Publish docs to Confluence
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths: ['docs/**.md']
+
+# Don't let two publishes race on the same pages.
+concurrency:
+  group: confluence-publish
+  cancel-in-progress: false
 
 jobs:
-  update-pages:
+  publish:
     runs-on: ubuntu-latest
-    environment: docs-env
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0        # both ends of the push range have to be present
 
-      - name: Versions
-        run: ./bin/markfluence-linux-amd64 --version
-
-      - name: Update pages
+      - uses: mozilla/markfluence-action@main  # FIXME
+        with:
+          files: 'docs/**/*.md'
         env:
           CONFLUENCE_URL: ${{ secrets.CONFLUENCE_URL }}
           CONFLUENCE_USERNAME: ${{ secrets.CONFLUENCE_USERNAME }}
           CONFLUENCE_TOKEN: ${{ secrets.CONFLUENCE_TOKEN }}
-        run: ./bin/update_pages.sh
+          CONFLUENCE_CLOUD_ID: ${{ vars.CONFLUENCE_CLOUD_ID }}

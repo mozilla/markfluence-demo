@@ -1,0 +1,12 @@
+# Marks the root of a markfluence project. Image and link paths are recorded
+# relative to this directory. https://github.com/mozilla/markfluence
+
+space: ~60c36d0718e9f60071326951
+
+pages:
+  docs/markfluence-demo.md:
+    title: Markfluence Demo
+    space: ~60c36d0718e9f60071326951
+    parent: null
+    page_id: 3093070219
+    page_width: max
